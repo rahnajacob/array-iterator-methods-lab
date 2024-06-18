@@ -240,11 +240,13 @@ console.log('Exercise 9 My Result: ', idx)
 
 // Enter your solution code here:
 
-
+const totalYearsLived = inventors.reduce((totalYears, inventor) => {
+    const lifespan = inventor.passed - inventor.year
+    return totalYears += lifespan
+}, 0 )
 
 // Check your return value:
 console.log('Bonus 1 My Result: ', totalYearsLived)
-console.log('Bonus 1 Correct Result: ', 861)
 
 // Array.prototype.reduce()
 
@@ -257,12 +259,31 @@ console.log('Bonus 1 Correct Result: ', 861)
 // - Inside the reduce function, check if the travel method already exists as a key in your accumulator object. If it does, increment its count. If not, add it with a count of 1.
 // - Since you want to return an object, be sure to pass an empty {} for the initial value of the "accumulator".
 
-let travelMethodCounts = {}
+
 
 // Enter your solution code here:
 
+const travelMethodCounts = travelMethods.reduce((travelAcc, travelMethod) => {
+    if (travelAcc[travelMethod]) {
+        travelAcc[travelMethod] += 1 
+    } else {
+        travelAcc[travelMethod] = 1
+    }
+    return travelAcc
+}, {})
 
+
+// const travelMethodCounts = travelMethods.reduce((travelAcc, travelMethod) => {
+//     const [travelMethodKey, travelMethodValue] = travelMethod
+//     if (travelAcc === true) {
+//         const travelMethodValue += 1
+//     } else {
+//         travelAcc[travelMethod] = travelMethodValue
+//     }
+//        return travelAcc
+    
+// }, {})
 
 // Check your return value:
 console.log('Bonus 2 My Result: ', travelMethodCounts)
-console.log('Bonus 2 Correct Result: ', { car: 5, truck: 3, bike: 2, walk: 2, van: 2 })
+// console.log('Bonus 2 Correct Result: ', { car: 5, truck: 3, bike: 2, walk: 2, van: 2 })
